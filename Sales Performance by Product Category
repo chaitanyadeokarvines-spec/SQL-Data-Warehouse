@@ -1,0 +1,8 @@
+SELECT 
+    p.Category,
+    SUM(f.Total_Revenue) AS Total_Revenue,
+    SUM(f.Quantity) AS Total_Units_Sold
+FROM Fact_Sales f
+JOIN Dim_Product p ON f.Product_ID = p.Product_ID
+GROUP BY p.Category
+ORDER BY Total_Revenue DESC;
