@@ -1,0 +1,8 @@
+SELECT 
+    d.Month_Name,
+    d.Year,
+    SUM(f.Total_Revenue) AS Monthly_Revenue
+FROM Fact_Sales f
+JOIN Dim_Date d ON f.Date_ID = d.Date_ID
+GROUP BY d.Year, d.Month_Name, d.Date_ID -- Group by Date_ID to sort correctly
+ORDER BY d.Date_ID;
