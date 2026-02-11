@@ -1,0 +1,43 @@
+-- 1. Create Dimension Tables (Context) --
+
+CREATE TABLE Dim_Customer (
+    Customer_ID INT PRIMARY KEY,
+    Customer_Name VARCHAR(100),
+    City VARCHAR(50),
+    Country VARCHAR(50),
+    Segment VARCHAR(20) -- e.g., Corporate, Consumer
+);
+
+CREATE TABLE Dim_Product (
+    Product_ID INT PRIMARY KEY,
+    Product_Name VARCHAR(100),
+    Category VARCHAR(50), -- e.g., Electronics, Furniture
+    Sub_Category VARCHAR(50),
+    Unit_Price DECIMAL(10, 2)
+);
+
+CREATE TABLE Dim_Date (
+    Date_ID INT PRIMARY KEY, -- Format: YYYYMMDD
+    Full_Date DATE,
+    Year INT,
+    Quarter VARCHAR(10),
+    Month_Name VARCHAR(20),
+    Day_of_Week VARCHAR(20)
+);
+
+-- 2. Create Fact Table (Metrics) --
+
+CREATE TABLE Fact_Sales (
+    Sales_ID INT PRIMARY KEY,
+    Date_ID INT,
+    Customer_ID INT,
+    Product_ID INT,
+    Quantity INT,
+    Total_Revenue DECIMAL(10, 2),
+    Profit DECIMAL(10, 2),
+    
+    -- Foreign Keys connecting to Dimensions
+    FOREIGN KEY (Date_ID) REFERENCES Dim_Date(Date_ID),
+    FOREIGN KEY (Customer_ID) REFERENCES Dim_Customer(Customer_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Dim_Product(Product_ID)
+);
