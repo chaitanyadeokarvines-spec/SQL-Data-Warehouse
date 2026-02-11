@@ -1,0 +1,24 @@
+-- Populating Dim_Date
+INSERT INTO Dim_Date VALUES 
+(20230101, '2023-01-01', 2023, 'Q1', 'January', 'Sunday'),
+(20230102, '2023-01-02', 2023, 'Q1', 'January', 'Monday'),
+(20230215, '2023-02-15', 2023, 'Q1', 'February', 'Wednesday');
+
+-- Populating Dim_Customer
+INSERT INTO Dim_Customer VALUES 
+(1, 'Alice Smith', 'New York', 'USA', 'Consumer'),
+(2, 'Bob Jones', 'London', 'UK', 'Corporate'),
+(3, 'Charlie Brown', 'Berlin', 'Germany', 'Consumer');
+
+-- Populating Dim_Product
+INSERT INTO Dim_Product VALUES 
+(101, 'Smartphone', 'Electronics', 'Phones', 700.00),
+(102, 'Office Chair', 'Furniture', 'Chairs', 150.00),
+(103, 'Monitor', 'Electronics', 'Screens', 300.00);
+
+-- Populating Fact_Sales (The Transactional Data)
+INSERT INTO Fact_Sales VALUES 
+(1001, 20230101, 1, 101, 2, 1400.00, 200.00),
+(1002, 20230101, 2, 102, 4, 600.00, 100.00),
+(1003, 20230102, 1, 103, 1, 300.00, 50.00),
+(1004, 20230215, 3, 101, 1, 700.00, 100.00);
